@@ -42,8 +42,7 @@ X_train, y_train, encoder, lb = process_data(
     # do not need to pass encoder and lb as input
     X=train,
     categorical_features=cat_features,
-    training=True
-    label="income"
+    label="salary"
     )
 
 X_test, y_test, _, _ = process_data(
