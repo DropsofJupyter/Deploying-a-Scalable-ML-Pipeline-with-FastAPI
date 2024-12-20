@@ -88,7 +88,8 @@ for col in cat_features:
             column_name=col,
             slice_value=slicevalue,
             categorical_features=cat_features,
-            lb=y_test,
+            label="salary",
+            lb=lb,
             encoder=encoder,
             model=model
         )
