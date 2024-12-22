@@ -1,15 +1,15 @@
 import pytest
 
+# TODO: add necessary import
 import pandas as pd
 import os
 
 
-# TODO: add necessary import
 
 # TODO: implement the first test. Change the function name and input as needed
-def test_one():
+def test_cat_features():
     """
-    # add description for the first test
+    check whether the categorical columns in the census.csv dataset match the categorical columns being transformed in the cat_features variable as it is instantiated in the main.py file at the project root.
     """
     # Your code here
     project_path = os.path.dirname(os.path.abspath(__file__))
