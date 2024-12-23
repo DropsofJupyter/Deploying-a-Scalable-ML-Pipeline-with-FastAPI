@@ -4,7 +4,9 @@ import pytest
 import pandas as pd
 import os
 from ml.model import load_model
+from ml.data import process_data
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 
 # TODO: implement the first test. Change the function name and input as needed
@@ -45,9 +47,38 @@ def test_model_type():
 
 
 # TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_train_xy_shape():
     """
-    # add description for the third test
+    load csv dataset for training from project root '/data/census.csv', then performs the train_test_split with same random state as is used in the train_model.py file. Finally, compares the X_train and y_train from the process_data function in the project root '/ml/data.py' file
     """
-    # Your code here
-    pass
+    project_path = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(project_path, "data", "census.csv")
+    
+    df = pd.read_csv(data_path)
+
+    train, _ = train_test_split(df, test_size=0.3, random_state=42)
+
+    cat_features = [
+        "workclass",
+        "education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "native-country",
+    ]
+
+    X_train, y_train, _, _ = process_data(
+    # your code here
+    # use the train dataset 
+    # use training=True
+    # do not need to pass encoder and lb as input
+    X=train,
+    categorical_features=cat_features,
+    label="salary"
+    )
+
+    assert X_train.shape[0] == y_train.shape[0]
+
+
